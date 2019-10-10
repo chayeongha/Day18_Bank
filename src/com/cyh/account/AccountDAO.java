@@ -14,12 +14,20 @@ public class AccountDAO {
 		int result =0;
 
 
-		con= DBConnector.getConnection();
-		String sql="insert into account values(? , ? ,?,?) ";
-		st=con.prepareStatement(sql);
-
-		//계좌번호대신 날짜입력.
-		st.setString(1, accountDTO.getAccountNumber());
+		try {
+			con= DBConnector.getConnection();
+			String sql="insert into account values(? , ? ,?,?) ";
+			st=con.prepareStatement(sql);
+			
+			//계좌번호대신 날짜
+			st.setString(1, accountDTO.getAccountNumber());
+			
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 
 
