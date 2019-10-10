@@ -1,11 +1,14 @@
 package com.cyh.account;
 
+import java.util.Calendar;
+
 public class AccountDTO {
 	
-	private String accountNumber;
-	private String accountName;
-	private int accountBalance;
-	private String id;
+	private String accountNumber;//계좌번호
+	private String accountName;//계좌명
+	private int accountBalance;//잔액
+	private String id;//처음 로그인할때 id
+ 
 
 	public String getAccountNumber() {
 		return accountNumber;

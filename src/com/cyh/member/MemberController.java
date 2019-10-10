@@ -73,6 +73,9 @@ public class MemberController {
 				String msg2 = "Login Fail";
 				if(memberDTO!= null) {
 					msg2="Login Success";
+					//계좌명을 입력하세요 accountname 추가
+					//2번로그인이 실행됐을때 accountController의 메서드가 실행 
+					
 				}
 				bankView.view(msg2);
 				

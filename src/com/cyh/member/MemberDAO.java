@@ -26,8 +26,9 @@ public class MemberDAO {
 		st.setString(4, memberDTO.getPhone());
 		st.setString(5, memberDTO.getEmail());
 
-		result = st.executeUpdate();
+		result = st.executeUpdate(); //result값이1이면 성공
 
+		
 		st.close();
 		con.close();
 
