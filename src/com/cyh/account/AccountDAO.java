@@ -3,6 +3,7 @@ package com.cyh.account;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.cyh.member.MemberDTO;
@@ -11,37 +12,45 @@ import com.cyh.util.DBConnector;
 public class AccountDAO {
   
 	//accountSelect 조회 메서드 실행
-	public AccountDTO  accountSelect(AccountDTO accountDTO) {
+	public ArrayList<AccountDTO>  accountSelect(String id)throws Exception{
 		
 		Connection con= null;
 		PreparedStatement st=null;
 		ResultSet rs=null;
+		ArrayList<AccountDTO>ar =new ArrayList<AccountDTO>();
 		
-		try {
+		
+		
 			con=DBConnector.getConnection();
 			// id를 입력해서 정보를 조회
-			
 			
 			String sql = "select *from account  where id=?";
 			st= con.prepareStatement(sql);
 			// 입력받은값을 set?
-			st.setString(1,accountDTO.getId() );
+			st.setString(1,id);
 			
 			rs= st.executeQuery();
 			
-			if(rs.next()) {
-						accountDTO.setId(rs.getString("ID"));
+			//id가 여러개이므로 와일문진행
+			while(rs.next()) {
+					AccountDTO  accountDTO = new AccountDTO();
+					accountDTO.setAccountNumber(rs.getString("accountNumber"));
+					accountDTO.setAccountName(rs.getString("accountName"));
+					accountDTO.setAccountBalance(rs.getLong("accountBalance"));
+					ar.add(accountDTO);
 				
+					
 			}
+			rs.close();	
+			st.close();
+			con.close();
+			return ar;
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return accountDTO;
+		
+		
 	}
 	
-	
+
 	
 	public int accountCreate(AccountDTO accountDTO) {
 		// 리턴은 인트타입 

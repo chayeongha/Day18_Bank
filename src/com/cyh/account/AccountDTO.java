@@ -25,8 +25,8 @@ public class AccountDTO {
 	public long getAccountBalance() {
 		return accountBalance;
 	}
-	public void setAccountBalance(int accountBalance) {
-		this.accountBalance = accountBalance;
+	public void setAccountBalance(long l) {
+		this.accountBalance = l;
 	}
 	public String getId() {
 		return id;

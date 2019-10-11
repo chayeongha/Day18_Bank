@@ -14,8 +14,8 @@ public class DBConnector  {
 		String user="user01";
 		String password="user01";
 		String url="jdbc:oracle:thin:@192.168.56.101:1521:xe";
-		String driver="oracle.jdbc.OracleDriver:oracleDriver";
-		
+		String driver="oracle.jdbc.driver.OracleDriver";
+		//"oracle.jdbc.driver.OracleDriver";
 	Connection con =null;//Connection 선언
 	
 	Class.forName(driver);//exception발생--throws Exception

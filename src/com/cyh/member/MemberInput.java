@@ -6,6 +6,7 @@ public class MemberInput {
 	//로그인 입력
 	
 	public MemberDTO memberLogin(Scanner sc) {
+		
 		MemberDTO memberDTO =  new  MemberDTO();
 		System.out.println("ID를 입력");
 		memberDTO.setId(sc.next());
@@ -15,10 +16,6 @@ public class MemberInput {
 		return memberDTO;
 		
 	}
-	
-	
-	
-	
 	
 	//멤버에관련된 인풋
 

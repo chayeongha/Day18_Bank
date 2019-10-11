@@ -17,7 +17,7 @@ public class MemberDAO {
 		int result=0; //결과값이 인서트이기때문에 int값
 
 		con=DBConnector.getConnection();
-		String sql="insert into member values(?,?,?,?.?)";
+		String sql="insert into member values(?,?,?,?,?)";
 		st = con.prepareStatement(sql);
 
 		st.setString(1, memberDTO.getId());
