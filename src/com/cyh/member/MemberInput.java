@@ -1,8 +1,6 @@
-package com.cyh.bankInput;
+package com.cyh.member;
 
 import java.util.Scanner;
-
-import com.cyh.member.MemberDTO;
 
 public class MemberInput {
 	//로그인 입력

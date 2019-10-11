@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.cyh.account.AccountController;
 import com.cyh.bank.BanckMain;
-import com.cyh.bankInput.MemberInput;
 import com.cyh.bankView.BankView;
 
 public class MemberController {
@@ -74,7 +73,6 @@ public class MemberController {
 				}
 			
 				if(memberDTO!= null) {
-<<<<<<< HEAD
 					bankView.view("Login Success");
 					accountController.start(memberDTO);
 					//계좌명을 입력하세요 accountname 추가
@@ -82,12 +80,6 @@ public class MemberController {
 					//성공했을 시 accountController 스타트.
 				}else {
 					bankView.view("Login Fail");
-=======
-					msg2="Login Success";
-					//계좌명을 입력하세요 accountname 추가
-					//2번로그인이 실행됐을때 accountController의 메서드가 실행 
-					
->>>>>>> b5b038a2603e71519ebb43933473d40b9f80fa52
 				}
 				
 				break;

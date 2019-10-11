@@ -2,19 +2,49 @@ package com.cyh.account;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Calendar;
 
+import com.cyh.member.MemberDTO;
 import com.cyh.util.DBConnector;
 
 public class AccountDAO {
-
-<<<<<<< HEAD
+  
+	//accountSelect 조회 메서드 실행
+	public AccountDTO  accountSelect(AccountDTO accountDTO) {
+		
+		Connection con= null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		
+		try {
+			con=DBConnector.getConnection();
+			// id를 입력해서 정보를 조회
+			
+			
+			String sql = "select *from account  where id=?";
+			st= con.prepareStatement(sql);
+			// 입력받은값을 set?
+			st.setString(1,accountDTO.getId() );
+			
+			rs= st.executeQuery();
+			
+			if(rs.next()) {
+						accountDTO.setId(rs.getString("ID"));
+				
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return accountDTO;
+	}
+	
+	
+	
 	public int accountCreate(AccountDTO accountDTO) {
 		// 리턴은 인트타입 
-=======
-	public void accountCreate(AccountDTO accountDTO) {
-
->>>>>>> b5b038a2603e71519ebb43933473d40b9f80fa52
 		//준비단계
 		Connection con=null;
 		PreparedStatement  st=null;
@@ -24,7 +54,6 @@ public class AccountDAO {
 		//계좌명
 		//잔액
 		//처음 로그인할때 id
-<<<<<<< HEAD
 
 		try {
 			con= DBConnector.getConnection();
@@ -37,35 +66,6 @@ public class AccountDAO {
 
 			st.setString(1, accountDTO.getAccountNumber());
 			//계좌번호대신 날짜로 변형
-=======
-		
-		try {
-			con= DBConnector.getConnection();
-			String sql="insert into account values(? , ? ,?,?) ";
-			st=con.prepareStatement(sql);
-			//insert 일땐   executeUpdate -결과값이 int
-			//select 일땐  executeQuery- 결과값이 MemberDTO
-
-		
-			
-			st.setString(1, accountDTO.getAccountNumber());
-			//계좌번호대신 날짜로 변형
-
-			st.setString(2, accountDTO.getAccountName());
-			st.setInt(3, accountDTO.getAccountBalance());
-			st.setString(4, accountDTO.getId());
-
-			result = st.executeUpdate();
-
-			st.close();
-			con.close();
-
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
->>>>>>> b5b038a2603e71519ebb43933473d40b9f80fa52
 
 			st.setString(2, accountDTO.getAccountName());
 			//st.setLong(3, accountDTO.getAccountBalance());-0을 집어넣어줘서 만들필요가없음.

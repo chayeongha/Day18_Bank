@@ -1,12 +1,9 @@
-package com.cyh.accountInput;
+package com.cyh.account;
 
 import java.util.Calendar;
 import java.util.Scanner;
 
-import com.cyh.account.AccountDTO;
-
 public class AccountInput {
-<<<<<<< HEAD
 	//이것을 어카운트 컨트롤러에 보내서 화면으로 띄워야함.
 	public AccountDTO accountCreate() {
 		// TODO Auto-generated method stub
@@ -27,29 +24,10 @@ public class AccountInput {
 		//AccountDTO에 캘렌더값을 set시킴
 
 
-=======
-
-		private AccountDTO input() {
-			// TODO Auto-generated method stub
-			Scanner sc= new Scanner(System.in);
-			
-		// 현재시간을 캘린더객체를 - 스트링타입으로 변환후 이것을
-		//accountDTO에 넣어준뒤 
-		 // 반환시키자.
-		AccountDTO accountDTO =new AccountDTO();
-		
-		Calendar calendar =Calendar.getInstance();//캘린더
-		long l1 =calendar.getTimeInMillis();
-		String cal =String.valueOf(l1);
-		accountDTO.setAccountNumber(cal);
-		//AccountDTO에 캘렌더값을 set시킴
-		//이것을 어카운트 컨트롤러에 보내서 화면으로 띄워야함.
->>>>>>> b5b038a2603e71519ebb43933473d40b9f80fa52
 		System.out.println("계좌명을 입력하시오");
 		accountDTO.setAccountName(sc.next());
 		System.out.println("잔액을 입력하시오");
 		accountDTO.setAccountBalance(sc.nextInt());
-<<<<<<< HEAD
 		System.out.println("ID를 입력하시오");
 		accountDTO.setId(sc.next());
 
@@ -57,15 +35,4 @@ public class AccountInput {
 	}
 
 
-=======
-		
-		
-		
-		
-		
-		return accountDTO;
-		}
-
-	
->>>>>>> b5b038a2603e71519ebb43933473d40b9f80fa52
 }
