@@ -4,6 +4,7 @@ package com.cyh.account;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.cyh.accountInfo.AccountInfoController;
 import com.cyh.bankView.AccountView;
 import com.cyh.bankView.BankView;
 import com.cyh.member.MemberDTO;
@@ -16,7 +17,7 @@ public class AccountController {
 	private AccountDTO accountDTO;
 	private BankView bankView;
 	private AccountView accountView;
-
+	private AccountInfoController accountInfoController;
 
 	public AccountController() {
 		sc= new Scanner(System.in);
@@ -24,6 +25,9 @@ public class AccountController {
 		bankView = new BankView();
 		accountInput =new AccountInput();
 		accountView = new AccountView();
+		accountDTO =  new AccountDTO();
+		accountInfoController = new AccountInfoController();
+		
 	}
 
 
@@ -63,9 +67,9 @@ public class AccountController {
 				break;
 
 			case 2:
-				ArrayList<AccountDTO> ar;
+			
 				try {
-					ar = accountDAO.accountSelect(memberDTO.getId());
+					ArrayList<AccountDTO> ar = accountDAO.accountSelect(memberDTO.getId());
 					accountView.view(ar);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -74,7 +78,23 @@ public class AccountController {
 
 				break;
 
-			case 3:
+			case 3://계좌를 선택해서 조회
+				ArrayList<AccountDTO> ar=null;
+				try {
+					for(int i=0;i<ar.size();i++) {
+						
+						System.out.println(i+1+"."+ar.get(i).getAccountNumber());//i번째 계좌정보가 쭉 출력
+						
+					}
+					select = sc.nextInt();//입력하면 i번째 계좌번호가 선택
+					
+					accountInfoController.start(ar.get(select-1).getAccountNumber());
+					ar = accountDAO.accountSelect(memberDTO.getId());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				
 				break;
 			default:

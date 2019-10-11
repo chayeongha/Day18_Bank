@@ -6,11 +6,61 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.cyh.accountInfo.AccountInfoDTO;
 import com.cyh.member.MemberDTO;
 import com.cyh.util.DBConnector;
 
 public class AccountDAO {
   
+	//update Balance
+	public int updateBalance()throws Exception{
+		Connection con=null;
+		PreparedStatement st=null;
+		int result=0;
+		
+		con= DBConnector.getConnection();
+		
+		String sql="update account set accountBalance =?where account=?";
+		
+		st= con.prepareStatement(sql);
+		
+		st= setLong(1,AccountInfoDTO.getAccountNumber());
+		st= setString(2,accountInfoDTO);
+		
+				
+				return result;
+		
+	}
+	
+	//accountBalance
+	public long getAccountBalance() throws Exception{
+		Connection con = DBConnector.getConnection();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		long balance=0;
+		
+		con = DBConnector.getConnection();
+		
+		String sql = " select accountBalance from account where accountNumber=?";
+		
+				st= con.prepareStatement(sql);
+				
+				rs= st.executeQuery();
+				
+				if(rs.next()) {
+					balance =rs.getLong("accountBalance");
+				}
+				
+				rs.close();
+				st.close();
+				con.close();
+				
+		return balance;
+	}
+	
+
+	
+	
 	//accountSelect 조회 메서드 실행
 	public ArrayList<AccountDTO>  accountSelect(String id)throws Exception{
 		
@@ -47,11 +97,9 @@ public class AccountDAO {
 			return ar;
 			
 		
-		
 	}
 	
 
-	
 	public int accountCreate(AccountDTO accountDTO) {
 		// 리턴은 인트타입 
 		//준비단계

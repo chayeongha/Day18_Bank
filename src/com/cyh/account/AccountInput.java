@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class AccountInput {
 	//이것을 어카운트 컨트롤러에 보내서 화면으로 띄워야함.
+	
+	//계좌개설 메서드
 	public AccountDTO accountCreate() {
 		// TODO Auto-generated method stub
 		Scanner sc= new Scanner(System.in);
