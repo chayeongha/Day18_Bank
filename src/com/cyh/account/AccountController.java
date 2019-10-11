@@ -11,17 +11,16 @@ public class AccountController {
 	
 	private Scanner sc;
 	private AccountDAO accountDAO;
-	private AccountDTO accountDTO;
 	private AccountInput accountInput;
 	private BankView bankView;
-	
+	private AccountController accountController;
 	
 	public AccountController() {
 		sc= new Scanner(System.in);
 		accountDAO = new AccountDAO();
 		bankView = new BankView();
 		accountInput =new AccountInput();
-		accountDTO = new AccountDTO();
+		accountController =new AccountController();
 	}
 	
 	
@@ -37,7 +36,7 @@ public class AccountController {
 			
 			System.out.println("1. 계좌 개설");
 			System.out.println("2. 종료");
-			
+			select = sc.nextInt();
 			switch(select){
 				
 			case 1:
@@ -50,8 +49,11 @@ public class AccountController {
 				
 				String str= "Create Fail";
 				if(select >0) {			
+					str="Create Success";
+					accountController.start(memberDTO);
 				}
 						
+			bankView.view(str);	
 				break;
 				
 				

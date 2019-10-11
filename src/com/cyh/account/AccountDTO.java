@@ -6,7 +6,11 @@ public class AccountDTO {
 	
 	private String accountNumber;//계좌번호
 	private String accountName;//계좌명
+<<<<<<< HEAD
 	private long accountBalance;//잔액
+=======
+	private int accountBalance;//잔액
+>>>>>>> b5b038a2603e71519ebb43933473d40b9f80fa52
 	private String id;//처음 로그인할때 id
  
 
