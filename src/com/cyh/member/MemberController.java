@@ -2,6 +2,7 @@ package com.cyh.member;
 
 import java.util.Scanner;
 
+import com.cyh.account.AccountController;
 import com.cyh.bank.BanckMain;
 import com.cyh.bankInput.MemberInput;
 import com.cyh.bankView.BankView;
@@ -12,13 +13,14 @@ public class MemberController {
 	private MemberDAO memberDAO;
 	private MemberInput memberInput;
 	private BankView bankView;
-
+	private AccountController accountController;
 	public  MemberController() {
 
 		sc= new Scanner(System.in);
 		memberDAO= new MemberDAO();
 		memberInput = new MemberInput();
 		bankView= new BankView();
+		accountController = new AccountController();
 	}
 
 	//1.누르면 회원가입 //2.누르면 로그인
@@ -62,7 +64,7 @@ public class MemberController {
 				break;
 			case 2: 
 				//멤버dao 멤버 로그인 메서드실행
-				memberDTO=memberInput.memberJoin(sc);//멤버조인 메서드에서 객체를 만들어주어 널값이나올 가능성이없다
+				memberDTO=memberInput.memberLogin(sc);//멤버조인 메서드에서 객체를 만들어주어 널값이나올 가능성이없다
 				try {
 					memberDTO=memberDAO.memberLogin(memberDTO);
 				} catch (Exception e) {
@@ -70,14 +72,16 @@ public class MemberController {
 					e.printStackTrace();
 					memberDTO=null;
 				}
-				String msg2 = "Login Fail";
+			
 				if(memberDTO!= null) {
-					msg2="Login Success";
+					bankView.view("Login Success");
+					accountController.start(memberDTO);
 					//계좌명을 입력하세요 accountname 추가
 					//2번로그인이 실행됐을때 accountController의 메서드가 실행 
-					
+					//성공했을 시 accountController 스타트.
+				}else {
+					bankView.view("Login Fail");
 				}
-				bankView.view(msg2);
 				
 				break;
 

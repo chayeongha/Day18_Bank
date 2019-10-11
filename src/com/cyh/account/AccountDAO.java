@@ -23,18 +23,18 @@ public class AccountDAO {
 		try {
 			con= DBConnector.getConnection();
 			String sql="insert into account values(? , ? ,0,?) ";//받아온데이터를 집어넣음.//상황에따라 잔액이 달라질수있음
+			
 			st=con.prepareStatement(sql);
 			//insert 일땐   executeUpdate -결과값이 int
 			//select 일땐  executeQuery- 결과값이 MemberDTO
-
 
 
 			st.setString(1, accountDTO.getAccountNumber());
 			//계좌번호대신 날짜로 변형
 
 			st.setString(2, accountDTO.getAccountName());
-			st.setLong(3, accountDTO.getAccountBalance());
-			st.setString(4, accountDTO.getId());
+			//st.setLong(3, accountDTO.getAccountBalance());-0을 집어넣어줘서 만들필요가없음.
+			st.setString(3, accountDTO.getId());
 
 			result = st.executeUpdate();
 
