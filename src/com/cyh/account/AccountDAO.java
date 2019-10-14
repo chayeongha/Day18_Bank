@@ -12,7 +12,7 @@ import com.cyh.util.DBConnector;
 
 public class AccountDAO {
   
-	//update Balance
+	//update Balance -잔액을 
 	public int updateBalance()throws Exception{
 		Connection con=null;
 		PreparedStatement st=null;
@@ -32,7 +32,7 @@ public class AccountDAO {
 		
 	}
 	
-	//accountBalance
+	//accountBalance-계좌번호를 입력해서 계좌정보를 조회
 	public long getAccountBalance() throws Exception{
 		Connection con = DBConnector.getConnection();
 		PreparedStatement st = null;

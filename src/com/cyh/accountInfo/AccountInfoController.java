@@ -62,7 +62,6 @@ public class AccountInfoController {
 					select= accountInfoDTO.updateBalance(accountInfoDTO);
 				}
 			
-			
 				break;
 				
 			case 3://출금

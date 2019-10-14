@@ -20,6 +20,8 @@ public class AccountInfoDAO {
 	
 		con= DBConnector.getConnection();
 		
+		
+		
 		String sql="select * from accountInfo where accountNumber=?  "+
 		"Order by date desc";
 		
